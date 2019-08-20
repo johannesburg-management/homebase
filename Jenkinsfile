@@ -9,7 +9,7 @@ pipeline {
             steps {
 		sh 'echo checkout'
 		// git branch: 'master', credentialsId: 'cb39e95a-5ede-49c0-b51f-83624a733e40', url: 'git@bitbucket.org:lumsb/examples.git'    
-                // checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'cb39e95a-5ede-49c0-b51f-83624a733e40', url: 'git@bitbucket.org:lumsb/examples.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'cb39e95a-5ede-49c0-b51f-83624a733e40', url: 'git@bitbucket.org:lumsb/examples.git']]])
             }
         }    
         stage('Clean') {
