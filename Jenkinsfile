@@ -47,7 +47,7 @@ pipeline {
                 sh 'mvn package'
 		sh 'mvn install'
                 sh 'echo "publish to artifactory ok"'
-                hygieiaArtifactPublishStep artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "1.0-SNAPSHOT"
+                hygieiaArtifactPublishStep artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "my-johannesburgapp-1.0-SNAPSHOT.jar"
             } 
         }
         stage('QA') {
@@ -56,10 +56,10 @@ pipeline {
             }
             post { 
                 success {
-                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "1.0-SNAPSHOT", buildStatus: 'Success', environmentName: 'QA'
+                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "my-johannesburgapp-1.0-SNAPSHOT.jar", buildStatus: 'Success', environmentName: 'QA'
                 }
                 failure { 
-                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "1.0-SNAPSHOT", buildStatus: 'Failure', environmentName: 'QA'
+                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "my-johannesburgapp-1.0-SNAPSHOT.jar", buildStatus: 'Failure', environmentName: 'QA'
                 }
             }
         }
@@ -69,10 +69,10 @@ pipeline {
             }
             post { 
                 success {
-                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "1.0-SNAPSHOT", buildStatus: 'Success', environmentName: 'Stage'
+                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "my-johannesburgapp-1.0-SNAPSHOT.jar", buildStatus: 'Success', environmentName: 'Stage'
                 }
                 failure {
-                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "1.0-SNAPSHOT", buildStatus: 'Failure', environmentName: 'Stage'
+                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "my-johannesburgapp-1.0-SNAPSHOT.jar", buildStatus: 'Failure', environmentName: 'Stage'
                 }
             }
         }
@@ -82,10 +82,10 @@ pipeline {
             }
             post { 
                 success {
-                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "1.0-SNAPSHOT", buildStatus: 'Success', environmentName: 'Prod'
+                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "my-johannesburgapp-1.0-SNAPSHOT.jar", buildStatus: 'Success', environmentName: 'Prod'
                 }
                 failure {
-                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "1.0-SNAPSHOT", buildStatus: 'Failure', environmentName: 'Prod'
+                    hygieiaDeployPublishStep applicationName: 'my-johannesburg', artifactDirectory: 'target', artifactGroup: 'com.johannesburg.app', artifactName: '*.jar', artifactVersion: "my-johannesburgapp-1.0-SNAPSHOT.jar", buildStatus: 'Failure', environmentName: 'Prod'
                 }
             }
         }
